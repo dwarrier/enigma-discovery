@@ -122,6 +122,7 @@ module.exports = async function(deployer, network, accounts) {
     return;
   });
 
+  // SIMPLE ADDITION CONTRACT
   const config = {
     filename: "simple_addition.wasm",
     fn: "construct()",
@@ -135,6 +136,7 @@ module.exports = async function(deployer, network, accounts) {
     `Secret Contract "${config.filename}" deployed at Enigma address: ${address}`
   );
 
+  // MILLIONAIRES PROBLEM CONTRACT
   const configMillionairesProblem = {
     filename: "millionaires_problem.wasm",
     fn: "construct()",
@@ -148,5 +150,21 @@ module.exports = async function(deployer, network, accounts) {
   );
   console.log(
     `Secret Contract "${configMillionairesProblem.filename}" deployed at Enigma address: ${addressMillionairesProblem}`
+  );
+
+  // SECRET WHITELIST CONTRACT
+  const configSecretWhitelist = {
+    filename: "secret_whitelist.wasm",
+    fn: "construct()",
+    args: [],
+    gasLimit: 1000000,
+    gasPrice: utils.toGrains(1),
+    from: accounts[0]
+  };
+  const addressSecretWhitelist = await deploySecretContract(
+    configSecretWhitelist
+  );
+  console.log(
+    `Secret Contract "${configSecretWhitelist.filename}" deployed at Enigma address: ${addressSecretWhitelist}`
   );
 };

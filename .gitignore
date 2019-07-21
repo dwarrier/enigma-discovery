@@ -1,3 +1,5 @@
 build/
+.idea/
 node_modules
 secret_contracts/**/target/
+.DS_Store
